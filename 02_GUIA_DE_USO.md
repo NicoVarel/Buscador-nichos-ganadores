@@ -1,11 +1,11 @@
-# GUÍA DE USO — Investigador de Nichos Ganadores (v2.0 candidata)
+# GUÍA DE USO — Investigador de Nichos Ganadores (v2.1 candidata)
 
 ## Lectura de 3 minutos
 
 **Qué hace:** te ayuda a decidir qué canal de YouTube crear, con evidencia. Investiga **por etapas** (no todo de golpe) y puede continuar sin perder el progreso. **No** promete viralidad, ingresos ni éxito.
 
 ### Paso a paso
-1. Abre una IA **con búsqueda web** (ChatGPT, Claude, Gemini, Perplexity…).
+1. Abre una IA **con búsqueda web** (ChatGPT, Claude, Gemini, Perplexity…). **No necesitas** pagar herramientas, claves de API ni buscar canales: la IA los descubre y mide por su cuenta.
 2. Abre `01_PROMPT_PARA_ALUMNOS.md` y copia **una sola vez** el bloque entre INICIO y FIN. (Opcional: rellena antes «Datos que ya te doy»; lo que rellenes no te lo preguntarán de nuevo.)
 3. Envíalo. Si falta algún dato, te harán **una sola pregunta** (o escribe «por defecto»).
 4. **Mensaje 1:** la IA explora 6-8 nichos y elige 3 finalistas. Te da un resumen y un **bloque de continuidad**. Guárdalo en un archivo.
@@ -29,6 +29,13 @@ Empieza con: **MI NICHO RECOMENDADO · POR QUÉ LO ELEGIRÍA · PRINCIPALES RIES
 - **Antigüedad mínima:** para calcular el rendimiento habitual de un canal solo cuentan videos con al menos 14 días (7 en Shorts); los más nuevos se marcan «inmaduros».
 - **Muestras pequeñas:** con menos de 15 videos comparables (tras excluir el evaluado) el informe avisa y baja la confianza; con menos de 8 solo habla de patrones «posibles».
 - **Fechas:** las vistas de un video llevan fecha de publicación y de consulta; los suscriptores, solo la fecha de consulta.
+
+## ¿Qué hace la IA por ti?
+Descubre canales (búsqueda web y páginas públicas de YouTube), comprueba que existen y siguen activos, mira su fecha de creación, suscriptores y vistas, calcula su rendimiento habitual y detecta canales pequeños o recientes con resultados repetidos (no un solo video viral). **Si la IA te pide enviarle canales, estadísticas, una herramienta de pago o una clave, responde:** «Investígalo tú con las fuentes gratuitas (búsqueda web y páginas públicas de YouTube) y dime qué no pudiste comprobar». Herramientas como Nexlev o la API de YouTube son opcionales; nunca pegues claves en el chat.
+
+- **Alerta de concentración:** si un solo video reúne más de la mitad de las vistas de un canal, la IA lo avisa y baja la confianza; solo lo descarta si, sin ese video, el canal no tiene patrón.
+- **Shorts:** si no se puede saber cuándo se publicó un Short, el informe lo dice y no confirma patrones de Shorts.
+- **Datos heredados:** al continuar en otra conversación, lo que viene del bloque es «heredado» hasta que la IA lo reconfirma.
 
 ## Si algo falla
 | Problema | Qué hacer |

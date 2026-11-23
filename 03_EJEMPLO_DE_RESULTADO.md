@@ -1,8 +1,9 @@
 # EJEMPLO DE RESULTADO (v2.0)
 
 > ## ⚠ LEE ESTO ANTES
-> Este archivo tiene **tres partes de naturaleza distinta**. Ninguna es una oportunidad validada ni una recomendación para que elijas un nicho.
+> Este archivo tiene **cuatro partes de naturaleza distinta**. Ninguna es una oportunidad validada ni una recomendación para que elijas un nicho.
 > - **PARTE 1 — DATOS REALES, método v2.0:** informe de la Prueba A (principiante en español), con datos públicos de YouTube consultados el 23-11-2026 y un resultado **PROVISIONAL** (investigación «suficiente», no «completa»). Sirve para ver el formato de un informe honesto.
+> - **PARTE 1B — DATOS REALES, descubrimiento autónomo (v2.1):** tabla de canales que la IA descubrió y midió por sí sola el 23-11-2026.
 > - **PARTE 2 — DATOS REALES, método anterior (v1.1):** conservada del ejemplo previo. Las medianas de esa parte **no son comparables** con las de la Parte 1.
 > - **PARTE 3 — DATOS FICTICIOS:** los canales «Canal Ejemplo…» y sus cifras son inventados para enseñar la estructura.
 > Nunca mezcles los datos de una parte con los de otra. Los datos reales cambian cada día y dependen de la región (aquí, Argentina).
@@ -10,7 +11,7 @@
 ---
 
 # PARTE 1 · DATOS REALES (método v2.0) — Prueba A: principiante, español, faceless, 5 h/semana
-**Cómo se obtuvo:** Claude, con el navegador integrado, siguiendo el prompt v2.0 (listas de resultados y pestaña «Videos» de cada canal; sin cuentas ni herramientas de pago). Detalle de las etapas, el bloque de continuidad y los datos completos: `_pruebas_v2.0/A_resultado_etapas_1-4.md`. Vistas y suscriptores aproximados; fecha de consulta de todas las cifras: **2026-11-23**. Esta ejecución **no fue ciega ni independiente** (ver `05_TESTS.md`).
+**Cómo se obtuvo:** Claude, con el navegador integrado, siguiendo el prompt v2.0 (listas de resultados y pestaña «Videos» de cada canal; sin cuentas ni herramientas de pago). Vistas y suscriptores aproximados; fecha de consulta de todas las cifras: **2026-11-23**. Esta ejecución **no fue ciega ni independiente** (ver «Estado de validación» en el `README.md`).
 
 ## Informe final (Etapa 4)
 **RESUMEN SENCILLO**
@@ -88,6 +89,42 @@ Método M1-M6: pestaña «Videos» de cada canal (primera página, ~30 videos), 
 | **Total /100** | **60,5** | **62,5** | **62,0** |
 Confianza global: MEDIA-BAJA (la monetización y la diferenciación se basan en opinión). **EMPATE TÉCNICO** (diferencia máxima 2,0 puntos < 5). Desempate por Facilidad de producción y Afinidad: gana F1 mitología (producción 6 frente a 4). Estado: SUFICIENTE → recomendación PROVISIONAL.
 
+
+---
+
+### Anexo C · Ejemplo real de «bloque de continuidad» (final de la Etapa 1)
+Es lo que la IA entrega al terminar la primera etapa. Se guarda en un archivo y permite seguir con `continuar` (o pegarlo en una conversación nueva, como explica `06_CONTINUAR_INVESTIGACION.md`). Fíjate en que cada dato indica su origen: **[RECONFIRMADO]** si se abrió la fuente en esa conversación, **[HEREDADO]** si viene de un bloque anterior.
+```
+=== BLOQUE DE CONTINUIDAD · Investigador de Nichos v2.1 ===
+REGLAS ESENCIALES: no inventar canales/cifras; marcas [VERIFICADO]/[ESTIMACIÓN]/[OPINIÓN]/[NO DISPONIBLE]; datos de un bloque = [HEREDADOS] hasta reconfirmarlos; Shorts sin fecha de publicación = antigüedad [NO DISPONIBLE], sin confirmar patrones; un video con >50 % de las vistas = alerta de concentración, no descarte automático; mediana excluyendo el video evaluado (N≥15 normal, 8-14 reducida, <8 insuficiente); datos privados (CTR, retención, ingresos) no son públicos; estados COMPLETA/SUFICIENTE/INCOMPLETA/BLOQUEADA; sin ganador si falta evidencia; lenguaje sencillo; descubres tú los canales (no pedir canales, estadísticas, herramientas ni claves al alumno); sin scripts masivos ni saltar bloqueos.
+ETAPA COMPLETADA: 1 · ESTADO: SUFICIENTE · FECHA: 2026-11-23 · REGIÓN DE CONSULTA: Latinoamérica (español) · FUENTES: V1 ok · V2 ok · V3 no usada · V4 no configurada
+PERFIL: español LatAm+España · videos largos · faceless · gratis-bajo · 5 h/sem · principiante · sin nicho · monetizar a medio plazo · defectos aplicados: todos · mercado GRANDE, V=100 000
+NICHOS EVALUADOS: C1 misterios|9 canales ≥V|55,0|finalista · C2 historia antigua|17 canales ≥V|57,5|finalista · C3 ciencia universo|1 canal ≥V|46,0|descartado (subnicho débil, 1 consulta) · C4 psicología|2 canales ≥V|55,0|descartado · C5 finanzas|16|52,0|descartado (saturado) · C6 true crime|13|48,0|descartado (un canal domina) · C7 mitología|16 (ES+PT)|58,0|finalista
+FINALISTAS: F1=C7 mitología y leyendas explicadas, F2=C2 historia antigua, F3=C1 misterios
+FUENTES Y DATOS VERIFICADOS: listas de resultados de YouTube (orden por vistas, este año), consultadas 2026-11-23 [RECONFIRMADO]
+CANALES ANALIZADOS (Etapa 2): ninguno todavía
+PUNTUACIONES PROVISIONALES: las de NICHOS EVALUADOS (preliminares)
+BÚSQUEDAS YA HECHAS: «misterios sin resolver explicados», «historia del imperio romano documental», «misterios del universo explicados sencillo», «psicología hábitos comportamiento explicado», «finanzas personales para principiantes», «casos criminales reales documental latinoamérica», «mitología y leyendas explicadas»
+DATOS FALTANTES: medianas de canales pequeños y medianos por finalista; segunda comprobación de demanda; monetización; Google Trends
+SIGUIENTE TAREA: Etapa 2 · validar F1, F2 y F3 (2-3 canales clave cada uno)
+=== FIN DEL BLOQUE ===
+```
+
+---
+
+# PARTE 1B · DATOS REALES, descubiertos de forma autónoma (motor v2.1)
+Ejemplo de lo que la IA debe descubrir y medir **sin que el alumno aporte ningún canal**: canales pequeños o recientes, con fecha de alta, actividad, mediana de sus últimos 20 videos largos y patrón. Datos leídos de las páginas públicas de YouTube el **2026-11-23** (una página por vez, sin herramientas de pago ni API; región de consulta: Latinoamérica, español). Vistas redondeadas. «Top/total» = vistas del mejor video ÷ vistas totales del canal; «Últ. 30 d» = videos en los últimos 30 días.
+| Canal | Subs | Alta del canal | Vistas totales | Mediana (N=20) | Videos ≥5× | Top/total | Últ. 30 d | Lectura |
+|---|---|---|---|---|---|---|---|---|
+| youtube.com/@LaHistoriaMundial-q6v | 79,1 k | 30-ene-2026 | 11,0 M | 68 000 | 11 | 25 % | 9 | patrón · activo · reciente |
+| youtube.com/@LosTiemposSagrados | 24,3 k | 6-jun-2025 | 3,96 M | 3 550 | 18 | 24 % | 6 | patrón · activo · temática bíblica |
+| youtube.com/@ment3curiosa-m2e | 31,6 k | 29-jun-2025 | 10,4 M | 186 500 | 3 | 18 % | 10 | patrón · activo |
+| youtube.com/@Esto.NoLoSabias | 61,3 k | 3-sep-2023 | 14,0 M | 9 400 | 18 | 9 % | 26 | patrón · activo |
+| youtube.com/@Dato-Visual | 29,8 k | 29-oct-2025 | 3,34 M | 1 700 | 19 | 30 % | 4 | patrón · activo |
+| youtube.com/@Mitos_con_Mateo | 11,6 k | 25-mar-2026 | 1,77 M | 14 500 | 10 | 11 % | 0 | patrón, pero **inactivo** (último video hace ~4 meses): referencia histórica |
+| youtube.com/@ArchivoInevitable | 8,41 k | 15-may-2026 | 448 k | 228 | 4 | **76 %** | 17 | **alerta de concentración** (un video = 76 % de las vistas); sin ese video no hay patrón: caso aislado |
+| youtube.com/@Cr%C3%ADmenesOscuros-c2l | 19,7 k | 7-abr-2026 | 466 k | 162 | 7 | **83 %** | 16 | **alerta de concentración** (83 %); sin ese video no hay patrón: caso aislado |
+**Cómo leerlo (lenguaje sencillo):** los primeros cinco canales son pequeños, nacieron hace menos de tres años, siguen publicando y varios de sus videos consiguen muchas veces las vistas habituales del canal, sin depender de un solo éxito. «Mitos con Mateo» tuvo buenos resultados, pero lleva meses sin publicar: no es una oportunidad vigente. Los dos últimos tienen un único video muy visto y el resto casi nadie los ve: un video viral aislado no convierte a un canal en un canal exitoso. Las medianas muy bajas (decenas o cientos de vistas) hacen que las «veces» salgan enormes; por eso el método exige además un mínimo de vistas. Tampoco se sabe si el canal es «faceless» ni cuánto gana: son datos que no se pueden verificar de forma pública.
 
 ---
 

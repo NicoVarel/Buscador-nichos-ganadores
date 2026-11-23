@@ -1,6 +1,6 @@
-# METODOLOGÍA — versión 2.0 (candidata)
+# METODOLOGÍA — versión 2.1 (candidata)
 
-Este documento explica los criterios del prompt v2.0. **Debe coincidir con `01_PROMPT_PARA_ALUMNOS.md`**; si cambias uno, cambia el otro. El historial de la v1.1.1 está en `_backups/`.
+Este documento explica los criterios del prompt v2.1. **Debe coincidir con `01_PROMPT_PARA_ALUMNOS.md`**; si cambias uno, cambia el otro. El historial de la v1.1.1 está en `_backups/`.
 
 ## 1. Principios
 1. Evidencia antes que opinión; cada dato lleva marca ([VERIFICADO], [ESTIMACIÓN], [OPINIÓN], [NO DISPONIBLE]).
@@ -11,7 +11,7 @@ Este documento explica los criterios del prompt v2.0. **Debe coincidir con `01_P
 5. Se prefiere un informe con huecos honestos a uno completo e inventado.
 6. Los umbrales son referencias contextuales, no reglas universales.
 
-## 2. Ejecución por etapas (v2.0)
+## 2. Ejecución por etapas (v2.1)
 Problema de la v1.1.1: pedía en un solo mensaje 6-8 nichos, 18-24 consultas iniciales, ~36 consultas de validación, medianas, matriz, ideas e informe. Muchas IA no completan tanto trabajo de forma fiable. Solución: **investigación progresiva y reanudable**, repartida en mensajes sucesivos sin perder el trabajo.
 | Etapa | Contenido | Condición de finalización | Mensaje típico |
 |---|---|---|---|
@@ -36,7 +36,8 @@ Al terminar cada etapa se entrega un **bloque de continuidad** (formato fijo, si
 - **M2 Rendimiento habitual = mediana de vistas** (no el promedio, que lo distorsionan los outliers). Ventana estándar: **últimos 20 videos del mismo formato** (30 en Shorts), con ≥14 días de antigüedad (7 en Shorts) y ≤12 meses. El video evaluado se excluye de su propia mediana y N se cuenta **después** de esa exclusión. Muestra: N ≥15 normal; N de 8 a 14 «muestra reducida», confianza máx. Media; N <8 «muestra insuficiente»: razón = estimación, confianza Baja, solo outlier/patrón «posible». No se rellena la muestra con videos fuera de criterio sin avisar; si se amplía la ventana se declara y se baja la confianza un nivel. Opción preferida: **mediana contemporánea** (≈10 videos antes y ≈10 después del video evaluado).
 - **M3 Cálculo.** Ordenar las vistas de menor a mayor; N impar: valor central; N par: promedio de los dos centrales. Registrar «mediana de N videos, de fecha a fecha». Control de duplicados: no contar videos dos veces.
 - **M4 Razón y patrón.** Razón = vistas del video ÷ mediana. Outlier = ≥5×. Patrón = ≥3 videos distintos (12 meses) con razón ≥3× y al menos uno ≥5×. Solo se declaran con muestra suficiente (M2).
-- **M5 Edad.** Las vistas brutas de videos de distinta antigüedad no son comparables sin explicación. Se rankea con videos de los últimos 12 meses, se indica la antigüedad y se marca «inmaduro» lo de <14 días (<7 en Shorts: la misma antigüedad mínima de M2). Las vistas por mes son solo referencia secundaria.
+- **M4b Relevancia.** Un video solo cuenta como outlier si supera un mínimo absoluto (≈ V/10: ~10 000 vistas en largos de mercado grande; ×5 en Shorts); y si un solo video reúne más del 50 % de las vistas totales del canal (dato de «Más información sobre este canal») se emite una **alerta de concentración**: se baja la confianza y se comprueba si el resto de videos cumple M4 sin él (si cumple, el patrón sigue siendo válido; si no, es un caso aislado). Evita confundir «de 56 a 2 100 vistas» o un único viral con un canal exitoso.
+- **M5 Edad.** Las vistas brutas de videos de distinta antigüedad no son comparables sin explicación. Se rankea con videos de los últimos 12 meses, se indica la antigüedad y se marca «inmaduro» lo de <14 días (<7 en Shorts: la misma antigüedad mínima de M2). **Shorts sin fecha de publicación visible:** la antigüedad se declara [NO DISPONIBLE]; no se sustituye por ninguna aproximación, la mediana es solo orientativa (confianza Baja) y no se confirma ningún patrón que dependa de ella (como máximo «posible»). Las vistas por mes son solo referencia secundaria.
 - **M6 Registro.** Cada análisis declara ventana, N (tras excluir el video evaluado), fechas de publicación de los videos incluidos, formato y fecha de consulta del canal.
 *Por qué una sola ventana:* la versión anterior mencionaba 10, 30 y 90 videos. Ahora hay una ventana estándar (20) con una variante opcional (contemporánea) declarada siempre. Con 20 videos, la mediana es estable y refleja el rendimiento actual.
 *Limitación:* si un canal cambió mucho de tamaño o formato en 12 meses, la mediana de la ventana puede no representar la etapa de un video antiguo; por eso se prefiere la mediana contemporánea.
@@ -97,3 +98,14 @@ Política de contenido inauténtico y su aclaración de 2025; requisitos del Pro
 
 ## 13. Lenguaje para el alumno
 La IA usa internamente conceptos como mediana, outlier, RPM, confianza o umbral, pero los explica en lenguaje sencillo («este video consiguió unas seis veces más vistas que los videos habituales del canal»). El informe principal empieza con: mi nicho recomendado, por qué lo elegiría, principales riesgos, mis primeros 3 pasos y confianza de la recomendación; los datos técnicos van en anexos.
+
+## 14. Motor de descubrimiento autónomo (v2.1)
+**Objetivo:** que la IA descubra, verifique y mida canales sin que el alumno aporte canales, estadísticas, herramientas de pago ni claves. Nexlev y cualquier herramienta de pago son **opcionales** (V6) y nunca se piden.
+**Normas de acceso (investigadas el 2026-11-23):** el `robots.txt` de YouTube prohíbe a los rastreadores automáticos `/results` y `/feeds/videos.xml`, y sus condiciones de servicio restringen el acceso automatizado fuera de la API oficial o de buscadores públicos que respeten robots.txt. Por eso el recurso **no incluye ni recomienda rastreadores ni lectores de RSS**; las vías son: búsqueda web del proveedor (V1), lectura de páginas públicas una a una como lo haría una persona (V2), canales similares (V3), la API oficial como opción (V4), estadísticas públicas (V5) y herramientas de pago como apoyo (V6). Sin saltar bloqueos, límites, inicios de sesión ni captchas.
+**Cadena de respaldo:** V1 sin canales útiles → V2; V2 no carga → V1+V3; canal sin videos con vistas visibles → señal por lista de resultados (sesgada: nunca para medianas); ninguna vía → BLOQUEADA y conclusión provisional. Al alumno solo se le ofrece, al final y sin exigirla, una ficha opcional.
+**Tubería D1-D10:** descubrir candidatos → verificar canal real y activo → recopilar publicaciones → extraer estadísticas públicas → eliminar duplicados → calcular M1-M6/M4b → comparar nichos → registrar fuentes y fechas → evaluar confianza → informe.
+**Continuidad:** en los bloques, cada dato se marca [RECONFIRMADO] (abierto en la conversación actual) o [HEREDADO] (de un bloque previo, con su fecha); lo heredado decisivo se reconfirma antes de concluir.
+**Ficha por canal:** nombre y enlace; nicho/subnicho; formato; idioma; suscriptores (fecha de consulta); fecha de creación del canal y fecha del primer video accesible (distintas); vistas recientes; último video y videos en 30 días (activo si ≤60 días; >30 al mes = alerta de contenido masivo); videos destacados; mediana; patrón; concentración del mejor video.
+**Canales con oportunidad:** pequeños con videos muy vistos, creados hace ≤24 meses, faceless (no verificable de forma automática: [OPINIÓN]), con videos muy por encima de su mediana de forma repetida, con publicación constante, nichos emergentes y subnichos con hueco.
+**API oficial (opcional):** la cuota gratuita es de 10 000 unidades diarias; `search.list` cuesta 100 unidades; `channels.list`, `playlistItems.list` y `videos.list` cuestan 1. La API da la fecha de creación del canal, suscriptores (si no están ocultos), vistas por video y duración (para separar Shorts, ≤3 min). El script `herramientas_opcionales/youtube_api_descubrimiento.py` implementa esa ruta con la clave solo en una variable de entorno, caché, tope de cuota y parada sin inventar datos. Probado con 22 pruebas unitarias simuladas; **no probado contra la API real**.
+**Limitaciones conocidas:** la pestaña Shorts no muestra la fecha de publicación (antigüedad no disponible; no se confirman patrones en Shorts sin ella); lo faceless no se verifica automáticamente; la fecha del primer video accesible depende de poder ordenar por «Más antiguos»; los resultados dependen de la región/idioma del que consulta; las lecturas de páginas pueden fallar de forma intermitente.

@@ -1,4 +1,66 @@
-# TESTS — Registro de validación (v2.0)
+# TESTS — Correcciones finales v2.1 (ronda más reciente)
+Evidencias: `_pruebas_v2.1/pruebas_correcciones_finales.md`. Copia previa: `_backups/v2.1_2026-11-23/`.
+- **Cambios:** 06 actualizado a v2.1 y alineado; Shorts sin fecha de publicación → antigüedad [NO DISPONIBLE], sin proxy y sin confirmar patrones; la regla del 50 % pasa a **alerta de concentración** (se baja la confianza y se comprueba el patrón sin ese video; no descarta por sí sola); el ejemplo público sin referencias internas; el bloque de continuidad distingue **[HEREDADO]** de **[RECONFIRMADO]**; el script opcional aplica la misma lógica (22 pruebas unitarias).
+- **Pruebas reales (sin Nexlev, API ni enlaces del alumno):** Shorts (ciencia/espacio, español): V1 2 canales + V2 7 canales; 3 verificados; **0 patrones confirmables por falta de fecha de publicación**; 1 canal relevante (130 k suscriptores). Videos largos (historia de empresas): V1 10 canales + V2 14+; 4 medidos; 2 con patrón (Colapsos Perú, Imperios Olvidados), 1 con muestra reducida y 1 diminuto. Ambas ≈1,5 min.
+- **No probado:** la distinción heredado/reconfirmado en una conversación nueva (solo verificada por texto); ninguna IA distinta de Claude; la API real.
+- **Verificación local ejecutada:** 119 comprobaciones, 119 correctas (incluye 22 pruebas unitarias del script, escaneo de la carpeta pública y enlaces internos). Solo comprueban texto y lógica; no prueban el comportamiento de una IA.
+
+---
+
+# TESTS — Registro de validación (v2.1)
+
+**Última actualización: 2026-11-23 (versión 2.1 candidata, motor de descubrimiento autónomo).** Este archivo distingue lo EJECUTADO de lo PENDIENTE. Nada se marca como superado si no se ejecutó. Los registros de versiones anteriores (v2.0, v1.x) se conservan más abajo. Evidencias detalladas: `_pruebas_v2.1/resultados_antes_despues.md`.
+
+## 1. Veredicto honesto (v2.1)
+- **Mejora funcional demostrada:** con solo búsqueda web (la situación «antes») la IA descubría 4-8 canales por perfil y **no podía medir ninguno** (0 videos con vistas, 0 medianas). Con el motor v2.1 (búsqueda web + lectura de páginas públicas una a una), el mismo perfil dio ≥55 canales con vistas por video y 17 canales medidos a fondo (suscriptores, fecha de alta, vistas totales, mediana de 20 videos, patrón, actividad, concentración) en ≈2,7 min de herramientas, sin Nexlev, sin API y sin que el alumno aportara nada.
+- **¿Utilizable por un alumno como versión de PRUEBA?** Sí.
+- **¿Validada para publicación definitiva?** **No.** Siguen pendientes las pruebas en sesiones nuevas de ChatGPT, Gemini, Perplexity y Claude; mi ejecución no fue ciega ni independiente.
+- **Limitación estructural:** para medir canales hace falta que la IA pueda **abrir páginas de YouTube**. Si solo tiene búsqueda web (o la API sin clave), descubre canales pero no puede calcular medianas de forma legítima: el prompt lo declara (estado INCOMPLETA o BLOQUEADA) y entrega una conclusión provisional sin pedir trabajo al alumno.
+
+## 2. Transparencia sobre el método de pruebas
+En las rondas anteriores mis lecturas se hicieron con peticiones programadas en bucle. Al investigar las normas oficiales (el `robots.txt` de YouTube prohíbe a los rastreadores `/results` y `/feeds/videos.xml`; sus condiciones restringen el acceso automatizado fuera de la API oficial) esa técnica se descartó: **no se distribuye** y las pruebas de esta ronda leyeron la página ya abierta, una por vez (~40 páginas). Los datos de rondas anteriores obtenidos con esa técnica se conservan, marcados como tales.
+
+## 3. Resultado de cada prueba (v2.1)
+| Prueba | Qué se hizo realmente | Resultado |
+|---|---|---|
+| Base (antes) | v2.0 con solo búsqueda web, 3 perfiles | 4-8 canales por perfil, 0 estadísticas verificables |
+| **A · Principiante** | V1: 6 consultas → 21 canales; V2: 6 páginas → ≥55 canales con vistas; 9 canales leídos a fondo | **EJECUTADA.** Descubrimiento y medición autónomos; hallazgos: canales inactivos, volumen anómalo |
+| **B · Shorts** | V1: 3 consultas (~12 canales); V2 con filtro de duración (<4 min): 2 páginas; 8 canales verificados | **PARCIAL.** El motor funcionó, pero **no encontró canales pequeños de Shorts con patrón relevante** (casos aislados y minúsculos). El descubrimiento de Shorts es el punto más débil: las búsquedas «shorts» normales dan vistas casi nulas; la pestaña Shorts no muestra antigüedad |
+| **C · Largos recientes** | 9 canales con alta ≤24 meses y patrón (N=20); formato emergente «Todas las X explicadas» | **EJECUTADA** |
+| **D · Sin Nexlev** | Ninguna llamada a Nexlev ni a herramientas de pago en toda la ronda | **Superada** (flujo local) |
+| **E · Sin API** | Sin clave; script opcional termina con código 2 sin llamar a la red | **Superada para el flujo sin API.** La integración con la API real **NO se probó** (no hay clave): solo 21 pruebas unitarias con respuestas simuladas |
+| **F · Fuentes que fallan** | Caída simulada de V2 (solo V1: 1 canal, sin estadísticas → INCOMPLETA) y de V1 (solo V2: 12+ canales con vistas → SUFICIENTE); fallos reales: V1 con 1 resultado, «Más información» sin datos, pestaña Shorts vacía | **EJECUTADA.** El mecanismo alternativo funcionó; ninguna falla detuvo la investigación |
+| **G · Completa** | Etapas 0-4 hasta la recomendación PROVISIONAL (historia explicada, 64,0 / 62,0 / 59,0, empate técnico), sin aportar canales | **EJECUTADA** (sin 10 ideas ni plan, ya demostrados en v2.0) |
+| Pruebas externas (ChatGPT, Gemini, Perplexity, Claude en sesión nueva) | No realizadas | **PENDIENTE** |
+
+## 4. Problemas encontrados y corregidos (v2.1)
+| Problema | Corrección |
+|---|---|
+| Sin leer páginas, la IA descubre pero no mide | Motor V1-V6 con cadena de respaldo, tubería D1-D10 y ficha por canal; el alumno nunca aporta datos |
+| Canales con «patrón» que llevan meses sin publicar (3 de mitología) | Regla de actividad (último video ≤60 días); inactivos = solo referencia histórica |
+| «Éxitos» que eran un solo video (76-83 % de las vistas del canal) | M4b: un video con >50 % de las vistas = caso aislado |
+| Razones enormes con medianas diminutas (56 → 2 100 vistas) | M4b: mínimo absoluto de vistas (~V/10; Shorts ×5) |
+| Canal con 33 videos en 30 días | Alerta de volumen anómalo / contenido masivo |
+| Canal con títulos en inglés dentro de un nicho en español | Comprobación del idioma por canal |
+| Fecha de alta no legible a veces | Reintento único; si falla, [NO DISPONIBLE] |
+| La pestaña Shorts no muestra antigüedad | Proxy declarado (excluir los 5 más recientes) y [ESTIMACIÓN] |
+| Posible incumplimiento de normas de YouTube con rastreo automático | Se descartan rastreadores y RSS; V2 es lectura una a una; la API oficial queda como opción |
+
+## 5. Verificaciones locales
+Script `_pruebas_v2.1/verificacion_local.py`: **78 comprobaciones, 78 correctas** (incluye la ejecución de las 21 pruebas unitarias del script opcional). Solo verifican texto y lógica; **no** prueban el comportamiento de una IA.
+
+## 6. Limitaciones pendientes
+- Sin pruebas externas y ejecutor no independiente.
+- Las medianas requieren una IA capaz de abrir páginas de YouTube; con solo búsqueda web el resultado es provisional.
+- Descubrimiento de canales de Shorts débil; «faceless» no se verifica automáticamente; fecha del primer video accesible no obtenida en esta ronda.
+- Sin Trends ni RPM/monetización verificados; los resultados dependen de la región.
+- API oficial no probada contra el servicio real.
+- Lecturas intermitentes y ventana del navegador oculta pueden dar tiempos agotados.
+- El prompt creció (≈29 500 caracteres): riesgo en IA con contexto pequeño.
+
+---
+
+# HISTORIAL v2.0 (conservado)
 
 **Última actualización: 2026-11-23 (versión 2.0 candidata).** Este archivo distingue lo EJECUTADO de lo PENDIENTE. Nada se marca como superado si no se completó. Debajo (sección «HISTORIAL») se conservan íntegros los registros de las versiones 1.0 a 1.1.1.
 
